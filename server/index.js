@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const fs = require("fs");
 const port = process.env.PORT || 8000;
+const { v4: uuidv4 } = require("uuid");
 
 const shiftsFilePath = "./data/shifts.json";
 
 app.use(express.json());
-
+app.use(cors());
 // GET /api/shifts - returns all shifts
 app.get("/api/shifts", (req, res) => {
   fs.readFile(shiftsFilePath, "utf8", (err, data) => {
@@ -21,7 +23,11 @@ app.get("/api/shifts", (req, res) => {
 
 // POST /api/shifts - creates a new shift
 app.post("/api/shifts", (req, res) => {
-  const newShift = req.body;
+  let newShift = req.body;
+  if (!newShift.start_time || !newShift.end_time) {
+    res.status(400).json({ error: "Please enter both start and end time" });
+    return;
+  }
 
   fs.readFile(shiftsFilePath, "utf8", (err, data) => {
     if (err) {
@@ -29,7 +35,7 @@ app.post("/api/shifts", (req, res) => {
       return;
     }
     const shifts = JSON.parse(data);
-    newShift.id = shifts.length + 1;
+    newShift.id = uuidv4();
     shifts.push(newShift);
 
     fs.writeFile(shiftsFilePath, JSON.stringify(shifts, null, 2), (err) => {
@@ -44,8 +50,8 @@ app.post("/api/shifts", (req, res) => {
 
 // DELETE /api/shifts/:id - deletes a shift
 app.delete("/api/shifts/:id", (req, res) => {
-  const shiftId = parseInt(req.params.id);
-
+  const shiftId = req.params.id;
+  console.log(shiftId);
   fs.readFile(shiftsFilePath, "utf8", (err, data) => {
     if (err) {
       res.status(500).json({ error: "Internal Server Error" });
@@ -70,7 +76,7 @@ app.delete("/api/shifts/:id", (req, res) => {
       if (err) {
         res.status(500).json({ error: "Internal Server Error" });
       } else {
-        res.status(204).send(); // No content after successful deletion
+        res.status(204).send();
       }
     });
   });
