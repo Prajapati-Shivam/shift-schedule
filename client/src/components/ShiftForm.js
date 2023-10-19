@@ -24,6 +24,10 @@ const ShiftForm = ({ onAdd }) => {
       toast.info("Please enter a start and end time!");
       return;
     }
+    if (end_time < start_time) {
+      toast.info("End time must be after start time!");
+      return;
+    }
     const formattedStartTime = formatTime(start_time);
     const formattedEndTime = formatTime(end_time);
     onAdd({ start_time: formattedStartTime, end_time: formattedEndTime });
@@ -35,7 +39,7 @@ const ShiftForm = ({ onAdd }) => {
     <div className="flex flex-col gap-3 py-6">
       <h2 className="text-2xl font-semibold">Add New Shift</h2>
       <form onSubmit={handleSubmit}>
-        <div className="w-full flex gap-4 mb-4 text-md font-medium">
+        <div className="flex gap-4 mb-4 text-md font-medium w-full items-center justify-between">
           <label>
             Start Time:
             <input

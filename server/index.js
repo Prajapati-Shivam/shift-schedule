@@ -51,7 +51,6 @@ app.post("/api/shifts", (req, res) => {
 // DELETE /api/shifts/:id - deletes a shift
 app.delete("/api/shifts/:id", (req, res) => {
   const shiftId = req.params.id;
-  console.log(shiftId);
   fs.readFile(shiftsFilePath, "utf8", (err, data) => {
     if (err) {
       res.status(500).json({ error: "Internal Server Error" });
