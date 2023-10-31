@@ -24,7 +24,7 @@ const ShiftForm = ({ onAdd }) => {
       toast.info("Please enter a start and end time!");
       return;
     }
-    if (end_time < start_time) {
+    if (start_time > end_time) {
       toast.info("End time must be after start time!");
       return;
     }

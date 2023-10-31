@@ -62,7 +62,7 @@ function App() {
 
   return (
     <div className="bg-blue-50 h-screen">
-      <h1 className="text-4xl font-bold text-center py-6 border-b-4 border-black">
+      <h1 className="text-4xl font-bold text-center py-6 border-b-4 border-black underline hover:decoration-wavy">
         Shift Scheduling App📝
       </h1>
       <div className="flex px-8 flex-col max-w-xl mx-auto">
