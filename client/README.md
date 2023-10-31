@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Simple Shift Scheduling Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This is a simple web application for managing shift schedules. It provides a user-friendly interface for creating, viewing, and deleting shifts. The project consists of a frontend built with React and a backend implemented with Node.js and Express.js. Shift data is stored in a JSON file on the backend.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Display a list of shifts with their start and end times.
+- Add new shifts using a user-friendly form.
+- Delete existing shifts with a single click.
+- Shift times are displayed in a "hh:mm AM/PM" format.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js installed on your system.
+- A code editor (e.g., Visual Studio Code).
+- Basic knowledge of JavaScript, React, and Node.js.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend
 
-### `npm run build`
+1. Navigate to the `shift-scheduling-backend` directory.
+2. Run `npm install` to install the necessary dependencies.
+3. Create a `shifts.json` file in the `data` directory with an empty array `[]`.
+4. Run the backend server with `npm start`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Frontend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Navigate to the `shift-scheduling-frontend` directory.
+2. Run `npm install` to install the necessary dependencies.
+3. Start the development server with `npm start`.
+4. Open your web browser and go to `http://localhost:3000` to access the frontend.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Endpoints
 
-### `npm run eject`
+- `GET /api/shifts`: Retrieve a list of all shifts.
+- `POST /api/shifts`: Create a new shift.
+- `DELETE /api/shifts/:id`: Delete a shift by its ID.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Frontend Components
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `ShiftList.js`: Displays a list of shifts.
+- `ShiftForm.js`: Allows users to add new shifts.
+- `ShiftItem.js`: Displays individual shift details.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Backend Data Storage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Shift data is stored in a `shifts.json` file on the backend.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
